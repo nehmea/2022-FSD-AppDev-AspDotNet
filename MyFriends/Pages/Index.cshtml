@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Friend Name</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        <tbody>
+                @foreach (var friend in Model.Friends)
+                {
+                <tr>
+                    <td>@friend.Name</td>
+                    <td>@friend.Age</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" asp-page="/view" asp-route-id="@friend.Id"
+                        title="View @friend.Name">View Friend</a>
+                    </td>
+                </tr>
+                }
+        </tbody>
+        </thead>
+    </table>
+</div>

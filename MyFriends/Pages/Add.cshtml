@@ -1,0 +1,21 @@
+﻿@page
+@model MyFriends.Pages.AddModel
+@{
+
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="NewFriend.Name" class="form-label">Name</label>
+            <input asp-for="NewFriend.Name" class="form-control" />
+            <span asp-validation-for="NewFriend.Name"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewFriend.Age" class="form-label">Age</label>
+            <input asp-for="NewFriend.Age" class="form-control" />
+            <span asp-validation-for="NewFriend.Age"></span>
+        </div>
+        <div>
+            <button class="btn btn-primary">Add Friend</button>
+        </div>
+
+    </form>
+}

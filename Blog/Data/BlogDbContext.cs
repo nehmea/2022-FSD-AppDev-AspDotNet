@@ -16,7 +16,7 @@ namespace Blog.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data source=Blog.db");
+            optionsBuilder.UseSqlite(@"Data source=Blog.sqlite");
         }
     }
 

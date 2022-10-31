@@ -1,0 +1,11 @@
+﻿@page "{Id:int}"
+@model Blog.Pages.ViewArticleModel
+@{
+    ViewData["Title"] = Model.article.Title;
+}
+
+<div class="container">
+    <h1>@Model.article.Title</h1>
+    <h4><a asp-page="AuthorArticles" asp-route-id="@Model.article.Author.Id">@Model.article.Author.UserName</a></h4>
+    <p>@Model.article.Body</p>
+</div>

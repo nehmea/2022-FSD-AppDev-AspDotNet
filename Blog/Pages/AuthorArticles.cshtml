@@ -1,13 +1,13 @@
-﻿@page
-@model IndexModel
+﻿@page "{Id}"
+@model Blog.Pages.AuthorArticlesModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = @Model.authorArticles.Count;
 }
 
 <div class="container">
     <h1 class="display-4">Welcome</h1>
     <div class="row g-4">
-        @foreach (Article article in Model.articlesList)
+        @foreach (Article article in Model.authorArticles)
         {
             <div class="col-sm-4">
                 <div class="card">

@@ -10,13 +10,11 @@ namespace Blog.Pages
     {
 
         private UserManager<IdentityUser> userManager;
-        private SignInManager<IdentityUser> signInManager;
 
         private ILogger<RegisterModel> logger;
-        public RegisterModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ILogger<RegisterModel> logger)
+        public RegisterModel(UserManager<IdentityUser> userManager, ILogger<RegisterModel> logger)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;
             this.logger = logger;
         }
 

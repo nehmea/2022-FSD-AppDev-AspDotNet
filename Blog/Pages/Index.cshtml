@@ -12,8 +12,9 @@
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">@article.Title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">@article.Author.UserName</h6>
+                        <h3 class="card-title">@article.Title</h3>
+                        <h5 class="card-subtitle mb-2 text-muted">@article.Author.UserName</h5>
+                        <p class="card-subtitle mb-2 text-muted">@article.Created</p>
                         <p class="card-text text-truncate-container">@article.Body</p>
                         <a class="btn btn-light" asp-page="/ViewArticle" asp-route-id="@article.Id"
                         title="Order @article.Title">Read more</a>

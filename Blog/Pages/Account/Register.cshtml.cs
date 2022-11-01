@@ -44,16 +44,32 @@ namespace Blog.Pages
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email, EmailConfirmed = true };
                 var result = await userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     logger.LogInformation($"User {Input.Email} created a new account with password");
-                    return RedirectToPage("RegisterSuccess", new { email = Input.Email });
+                    var result2 = await userManager.AddToRoleAsync(user, "User");
+                    if (result2.Succeeded)
+                    {
+                        logger.LogInformation($"User {Input.Email} Has been added to Role User");
+                        return RedirectToPage("RegisterSuccess", new { email = Input.Email });
+                    }
+                    else
+                    {
+                        await userManager.DeleteAsync(user);
+                        foreach (var error in result2.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                    }
                 }
-                foreach (var error in result.Errors)
+                else
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
             }
             return Page();

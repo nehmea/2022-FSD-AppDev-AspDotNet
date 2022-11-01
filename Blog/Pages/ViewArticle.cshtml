@@ -7,5 +7,6 @@
 <div class="container">
     <h1>@Model.article.Title</h1>
     <h4><a asp-page="AuthorArticles" asp-route-id="@Model.article.Author.Id">@Model.article.Author.UserName</a></h4>
+    <h6 class="text-muted">@Model.article.Created</h6>
     <p>@Model.article.Body</p>
 </div>

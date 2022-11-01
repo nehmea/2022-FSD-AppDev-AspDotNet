@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Blog.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "User")]
     public class AddArticleModel : PageModel
     {
 

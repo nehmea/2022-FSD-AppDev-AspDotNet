@@ -1,4 +1,5 @@
 ﻿@inject SignInManager<IdentityUser> signInManager;
+@inject UserManager<IdentityUser> userManager;
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,11 +31,20 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        @if (signInManager.IsSignedIn(User))
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/AddArticle">Add article</a>
                             </li>
+                        }
+                        else if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Users">Users</a>
+                            </li>
+                        }
+                        @if (signInManager.IsSignedIn(User))
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Account/Logout">Logout</a>
                             </li>

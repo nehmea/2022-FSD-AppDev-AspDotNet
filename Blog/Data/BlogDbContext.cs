@@ -18,6 +18,7 @@ namespace Blog.Data
         {
             optionsBuilder.UseSqlite(@"Data source=Blog.sqlite");
         }
+
     }
 
 

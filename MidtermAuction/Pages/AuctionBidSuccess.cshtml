@@ -1,0 +1,9 @@
+﻿@page
+@model MidtermAuction.Pages.AuctionBidSuccessModel
+@{
+    ViewData["Title"] = "Auction Bid Success";
+}
+
+<h3>@ViewData["Title"]</h3>
+<p>You have successfully submitted a new Bid of <b>@Model.NewBidPrice</b> on <b>@Model.ItemName</b></p>
+<div><a href="./Index">Home</a></div>

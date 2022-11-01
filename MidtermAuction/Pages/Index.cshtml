@@ -1,0 +1,49 @@
+@page
+@model MidtermAuction.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="NewAuction">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Auction[0].SellerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auction[0].ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auction[0].LastPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Auction)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellerEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastPrice)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-page="./Auction" asp-route-id="@item.Id">Place your bid</a> |
+                    @* <a asp-page="./Details" asp-route-id="@item.Id">Details</a> | *@
+                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
